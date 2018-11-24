@@ -12,6 +12,7 @@
                     <th scope="col">Nombre</th>
                     <th scope="col">Email</th>
                     <th scope="col">#</th>
+                    <th scope="col">#</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,7 +26,12 @@
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->first_name }} {{ $user->last_name }}</td>
                     <td>{{ $user->email }}</td>
-                    <td></td>
+                    <td>
+                        <button type="button" class="btn btn-primary" onclick="document.location.href='/users/{{ $user->id }}/borrar'">Borrar</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary" onclick="document.location.href='/users/{{ $user->id }}'">Ver</button>
+                    </td>
                 </tr>
 
                 @endforeach
