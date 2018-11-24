@@ -1,98 +1,45 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
+@extends('layouts.app')
+@section('content')
+    <div class="container">
+        <div class="col-lg-12">
+            <div class="row">
+                <img src="{{asset("/img/jumbo.jpg")}}" class="img-responsive"/>
+            </div>
+        </div>
+<br/>
+        <div class="col-lg-12 text-center">
+            <div class="row">
+                <div class="col-lg-3">Bienvenido al portal Cruz Roja Española, donde podrás obtener información
+                    relacionada
+                    con la institución, las ONG, el voluntariado, las acciones en favor de los colectivos más
+                    vulnerables,
+                    la defensa de los derechos humanos, el medio ambiente, la lucha contra la discriminación racial, la
+                    defensa de las minorías étnicas, la cooperación con los países más desfavorecidos del planeta, en
+                    definitiva la solidaridad y el compromiso con los más desfavorecidos tienen cabida en este espacio,
+                    haciendo realidad nuestra misión "cada vez más cerca de las personas".
                 </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
+                <div class="col-lg-3">Cruz Roja Española considera la participación como un aspecto esencial, por ello,
+                    este
+                    portal pretenden ser también un espacio abierto a la participación, tanto de nuestros voluntarios y
+                    socios, como de todos aquellos que tengan interés y preocupación por las cuestiones humanitarias y
+                    solidarias. Para ello, contamos con diferentes cauces de participación donde podrás dejar tus
+                    sugerencias, consultas, aportaciones, etc., así como debatir sobre temas de actualidad relacionados
+                    con
+                    la Institución, las ONG, el voluntariado.
                 </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                <div class="col-lg-3">
+                    Las ONG pretendemos extender la solidaridad a todos los ámbitos, por ello, al igual que otras
+                    asociaciones, ofrecemos este espacio solidario dentro de INTERNET. Si ya conoces Cruz Roja
+                    encontrarás,
+                    información actualizada que sin duda será de tu interés. Si es tu primer acercamiento a nuestra
+                    institución, te sorprenderá esta organización humanitaria fundada en 1863, presente en más de 189
+                    países
+                    y que cuenta con la participación de 100 millones de voluntarios de todo el mundo.
                 </div>
             </div>
         </div>
-    </body>
-</html>
+    </div>
+@endsection
+
+
+
