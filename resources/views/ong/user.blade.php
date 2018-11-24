@@ -55,20 +55,19 @@
             </div>
             <div class="form-group">
                 <label for="demand"> Demandante </label>
-                @if(isset($user) && isset($user->demand))
-                <input type="text" name="demand" class="form-control" id="demand" placeholder="demand" value="{{ $user->demand }}" />
-                @else
-                <input type="text" name="demand" class="form-control" id="demand" placeholder="demand" />
-                @endif
+                <select class="form-control" name="demand" id="demand" placeholder="demand" value="{{ $user->demand }}">
+                    <option value="1">Demandante</option>
+                    <option value="0">Voluntario</option>
+                </select>
             </div>
+
+            @if(isset($user) && isset($user->user_is_active))
             <div class="form-group">
                 <label for="user_is_active"> Usuario activo </label>
-                @if(isset($user) && isset($user->user_is_active))
                 <input type="text" name="user_is_active" class="form-control" id="user_is_active" placeholder="user_is_active" readonly="true" value="{{ $user->user_is_active }}" />
-                @else
-                <input type="text" name="user_is_active" class="form-control" id="user_is_active" placeholder="user_is_active" readonly="true" />
-                @endif
             </div>
+            @endif
+
             <div class="form-group">
                 <label for="email">Email</label>
                 @if(isset($user) && isset($user->email))
