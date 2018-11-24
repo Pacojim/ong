@@ -2,6 +2,13 @@
 
 @section('content')
 <div class="container">
+    <div class="row justify-content-center" style="padding: 25px;">
+
+        <button type="button" class="btn btn-primary" onclick="document.location.href = '/users/nuevo'">
+            Nuevo usuario
+        </button>
+
+    </div>
     <div class="row justify-content-center">
 
         <table class="table">
