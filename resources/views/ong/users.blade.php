@@ -1,10 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+
+@if (Auth::check())
+
 <div class="container">
     <div class="row justify-content-center" style="padding: 25px;">
 
-        <button type="button" class="btn btn-primary" onclick="document.location.href = '/users/nuevo'">
+        <button type="button" class="btn btn-primary" onclick="document.location.href = '/users-nuevo'">
             Nuevo usuario
         </button>
 
@@ -48,4 +51,15 @@
 
     </div>
 </div>
+
+@else
+
+<div class="container">
+    <div class="row justify-content-center">
+        <p>Acceso no permitido, requiere autenticacion</p>
+    </div>
+</div>
+
+@endif
+
 @endsection

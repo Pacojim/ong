@@ -2,9 +2,12 @@
 
 @section('content')
 
+@if (Auth::check())
+
 <div class="container">
     <div class="justify-content-center">
         <form action="{{$uriPost}}" method="POST">
+            @csrf
 
             @if(isset($user) && isset($user->id))
             <div class="form-group">
@@ -14,15 +17,15 @@
             @endif
 
             <div class="form-group">
-                <label for="name"> Nombre de usuario </label>
+                <label for="name"> Nombre </label>
                 @if(isset($user) && isset($user->name))
-                <input type="text" name="name" class="form-control" id="name" placeholder="name" value="{{ $user->name }}" />
+                <input required type="text" name="name" class="form-control" id="name" placeholder="name" value="{{ $user->name }}" />
                 @else
-                <input type="text" name="name" class="form-control" id="name" placeholder="name" />
+                <input required type="text" name="name" class="form-control" id="name" placeholder="name" />
                 @endif
             </div>
             <div class="form-group">
-                <label for="first_name"> Nombre </label>
+                <label for="first_name"> Apellido 1 </label>
                 @if(isset($user) && isset($user->first_name))
                 <input type="text" name="first_name" class="form-control" id="first_name" placeholder="first_name" value="{{ $user->first_name }}" />
                 @else
@@ -30,7 +33,7 @@
                 @endif
             </div>
             <div class="form-group">
-                <label for="last_name"> Apellidos </label>
+                <label for="last_name"> Apellido 2 </label>
                 @if(isset($user) && isset($user->last_name))
                 <input type="text" name="last_name" class="form-control" id="last_name" placeholder="last_name" value="{{ $user->last_name }}" />
                 @else
@@ -53,6 +56,10 @@
                 <input type="text" name="age" class="form-control" id="age" placeholder="age" />
                 @endif
             </div>
+
+
+            @if(isset($user) && isset($user->demand))
+
             <div class="form-group">
                 <label for="demand"> Demandante </label>
                 <select class="form-control" name="demand" id="demand" placeholder="demand" value="{{ $user->demand }}">
@@ -60,6 +67,18 @@
                     <option value="0">Voluntario</option>
                 </select>
             </div>
+
+            @else
+
+            <div class="form-group">
+                <label for="demand"> Demandante </label>
+                <select class="form-control" name="demand" id="demand" placeholder="demand" >
+                    <option value="1">Demandante</option>
+                    <option value="0">Voluntario</option>
+                </select>
+            </div>
+
+            @endif
 
             @if(isset($user) && isset($user->user_is_active))
             <div class="form-group">
@@ -84,11 +103,7 @@
             </div>
             @endif
 
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" name="password" id="password" placeholder="Password" />
-            </div>
-
+            <!--
             @if(isset($user) && isset($user->created_at))
             <div class="form-group">
                 <label for="created_at"> created_at </label>
@@ -102,6 +117,7 @@
                 <input type="text" name="updated_at" class="form-control" id="updated_at" placeholder="updated_at" readonly="true" value="{{ $user->updated_at }}" />
             </div>
             @endif
+            -->
 
             <button type="submit" class="btn btn-primary">
                 Guardar
@@ -109,5 +125,15 @@
         </form>
     </div>
 </div>
+
+@else
+
+<div class="container">
+    <div class="row justify-content-center">
+        <p>Acceso no permitido, requiere autenticacion</p>
+    </div>
+</div>
+
+@endif
 
 @endsection

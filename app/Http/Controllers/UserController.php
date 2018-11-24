@@ -40,7 +40,7 @@ class UserController extends BaseController {
             $user->demand = $request->get('demand');
             $user->save();
         }
-        return view("ong.user", ['user' => $user, 'uriPost' => '/users-gestion/' . $user->id]);
+        return view("ong.user", ['user' => $user, 'uriPost' => '/users/' . $user->id]);
     }
 
     public function nuevoUsuario() {
