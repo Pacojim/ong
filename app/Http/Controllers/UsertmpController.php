@@ -19,7 +19,7 @@ class UsertmpController extends BaseController {
     public function user($user) {
         $users = DB::select('select * from users where id = ?', [$user]);
 
-        return view("ong.user", ['user' => $users[0]]);
+        return view("ong.user", ['user' => $users[0], 'uriPost' => '/users/' . $users[0]->id]);
     }
     
 
