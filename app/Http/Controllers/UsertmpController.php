@@ -8,7 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use DB;
 
-class UserController extends BaseController {
+class UsertmpController extends BaseController {
 
     public function users() {
         $users = DB::select('select * from users where user_is_active = ?', [1]);
