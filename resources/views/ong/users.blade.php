@@ -5,12 +5,13 @@
     <div class="row justify-content-center">
 
         <table class="table">
-            <thead>
+            <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Usuario</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Email</th>
+                    <th scope="col">#</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,6 +25,7 @@
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->first_name }} {{ $user->last_name }}</td>
                     <td>{{ $user->email }}</td>
+                    <td></td>
                 </tr>
 
                 @endforeach
