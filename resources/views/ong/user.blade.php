@@ -4,52 +4,111 @@
 
 <div class="container">
     <div class="justify-content-center">
-        <form action="{{$uriPost}}">
+        <form action="{{$uriPost}}" method="POST">
+
+            @if(isset($user) && isset($user->id))
+            <div class="form-group">
+                <label for="id"> ID </label>
+                <input type="text" name="id" class="form-control" id="id" placeholder="id" value="{{ $user->id }}" readonly="true" />
+            </div>
+            @endif
+
             <div class="form-group">
                 <label for="name"> Nombre de usuario </label>
-                <input type="text" name="name" class="form-control" id="name" placeholder="name">
+                @if(isset($user) && isset($user->name))
+                <input type="text" name="name" class="form-control" id="name" placeholder="name" value="{{ $user->name }}" />
+                @else
+                <input type="text" name="name" class="form-control" id="name" placeholder="name" />
+                @endif
             </div>
             <div class="form-group">
-                <label for="name"> Nombre </label>
-                <input type="text" name="first_name" class="form-control" id="first_name" placeholder="first_name">
-            </div>
-            </div>
-            <div class="form-group">
-                <label for="name"> Apellidos </label>
-                <input type="text" name="last_name" class="form-control" id="last_name" placeholder="last_name">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputEmail1">Email</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                <label for="first_name"> Nombre </label>
+                @if(isset($user) && isset($user->first_name))
+                <input type="text" name="first_name" class="form-control" id="first_name" placeholder="first_name" value="{{ $user->first_name }}" />
+                @else
+                <input type="text" name="first_name" class="form-control" id="first_name" placeholder="first_name" />
+                @endif
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <label for="last_name"> Apellidos </label>
+                @if(isset($user) && isset($user->last_name))
+                <input type="text" name="last_name" class="form-control" id="last_name" placeholder="last_name" value="{{ $user->last_name }}" />
+                @else
+                <input type="text" name="last_name" class="form-control" id="last_name" placeholder="last_name" />
+                @endif
             </div>
-            <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            <div class="form-group">
+                <label for="address"> Dirección </label>
+                @if(isset($user) && isset($user->address))
+                <input type="text" name="address" class="form-control" id="address" placeholder="address" value="{{ $user->address }}" />
+                @else
+                <input type="text" name="address" class="form-control" id="address" placeholder="address" />
+                @endif
+            </div>
+            <div class="form-group">
+                <label for="age"> Edad </label>
+                @if(isset($user) && isset($user->age))
+                <input type="text" name="age" class="form-control" id="age" placeholder="age" value="{{ $user->age }}" />
+                @else
+                <input type="text" name="age" class="form-control" id="age" placeholder="age" />
+                @endif
+            </div>
+            <div class="form-group">
+                <label for="demand"> Demandante </label>
+                @if(isset($user) && isset($user->demand))
+                <input type="text" name="demand" class="form-control" id="demand" placeholder="demand" value="{{ $user->demand }}" />
+                @else
+                <input type="text" name="demand" class="form-control" id="demand" placeholder="demand" />
+                @endif
+            </div>
+            <div class="form-group">
+                <label for="user_is_active"> Usuario activo </label>
+                @if(isset($user) && isset($user->user_is_active))
+                <input type="text" name="user_is_active" class="form-control" id="user_is_active" placeholder="user_is_active" readonly="true" value="{{ $user->user_is_active }}" />
+                @else
+                <input type="text" name="user_is_active" class="form-control" id="user_is_active" placeholder="user_is_active" readonly="true" />
+                @endif
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                @if(isset($user) && isset($user->email))
+                <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Email" value="{{ $user->email }}" />
+                @else
+                <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Email"  />
+                @endif
             </div>
 
-            <button type="submit" class="btn btn-primary">Guardar</button>
+            @if(isset($user) && isset($user->email_verified_at))
+            <div class="form-group">
+                <label for="email_verified_at">Momento de verificación del email</label>
+                <input type="email_verified_at" readonly class="form-control" name="email_verified_at" id="email_verified_at" placeholder="email_verified_at" value="{{ $user->email_verified_at }}" />
+            </div>
+            @endif
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" name="password" id="password" placeholder="Password" />
+            </div>
+
+            @if(isset($user) && isset($user->created_at))
+            <div class="form-group">
+                <label for="created_at"> created_at </label>
+                <input type="text" name="created_at" class="form-control" id="created_at" placeholder="created_at" readonly="true" value="{{ $user->created_at }}" />
+            </div>
+            @endif
+
+            @if(isset($user) && isset($user->updated_at))
+            <div class="form-group">
+                <label for="updated_at"> updated_at </label>
+                <input type="text" name="updated_at" class="form-control" id="updated_at" placeholder="updated_at" readonly="true" value="{{ $user->updated_at }}" />
+            </div>
+            @endif
+
+            <button type="submit" class="btn btn-primary">
+                Guardar
+            </button>
         </form>
     </div>
 </div>
-
-id	int(10) unsigned	NO	PRI		auto_increment
-	varchar(255)	NO			
-	varchar(255)	NO			
-	varchar(255)	NO			
-address	varchar(255)	NO			
-age	int(11)	NO			
-demand	tinyint(1)	YES			
-user_is_active	tinyint(1)	NO		1	
-email	varchar(255)	NO	UNI		
-email_verified_at	timestamp	YES			
-password	varchar(255)	NO			
-remember_token	varchar(100)	YES			
-created_at	timestamp	YES			
-updated_at	timestamp	YES			
 
 @endsection
